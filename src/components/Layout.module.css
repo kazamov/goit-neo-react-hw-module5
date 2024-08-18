@@ -1,0 +1,12 @@
+.header {
+  border-bottom: 1px solid #eaeaea;
+  box-shadow: 0 2px 4px rgb(0 0 0 / 10%);
+  position: sticky;
+  top: 0;
+  z-index: 1;
+  background-color: #fffcfc;
+}
+
+.main {
+  padding: 2rem;
+}
