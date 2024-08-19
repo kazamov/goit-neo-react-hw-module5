@@ -1,14 +1,12 @@
-import MovieCard from './MovieCard';
+import { Children } from 'react';
 import classes from './MovieGallery.module.css';
 
-function MovieGallery({ movies }) {
+function MovieGallery({ children }) {
   return (
     <ul className={classes['movie-gallery']}>
-      {movies.map(movie => (
-        <li key={movie.id}>
-          <MovieCard movie={movie} />
-        </li>
-      ))}
+      {Children.map(children, child => {
+        return <li key={child.key}>{child}</li>;
+      })}
     </ul>
   );
 }

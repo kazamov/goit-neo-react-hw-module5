@@ -2,10 +2,11 @@ import { Suspense } from 'react';
 import { Await, defer, useLoaderData } from 'react-router-dom';
 
 import { getTrendingMovies } from '../api/tmdb-api';
-import MovieGallery from '../components/MovieGallery';
+import MovieGallerySkeleton from '../components/MovieGallerySkeleton';
+import MovieGalleryReal from '../components/MovieGalleryReal';
 
 async function load({ signal }) {
-  await new Promise(resolve => setTimeout(resolve, 1));
+  await new Promise(resolve => setTimeout(resolve, 3000));
   return getTrendingMovies({ signal });
 }
 
@@ -19,10 +20,10 @@ function HomePage() {
   const { data } = useLoaderData();
 
   return (
-    <Suspense fallback={'Loading...'}>
+    <Suspense fallback={<MovieGallerySkeleton />}>
       <Await resolve={data}>
         {({ results }) => {
-          return <MovieGallery movies={results} />;
+          return <MovieGalleryReal movies={results} />;
         }}
       </Await>
     </Suspense>

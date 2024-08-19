@@ -1,0 +1,65 @@
+.movie-card-skeleton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.skeleton {
+  background-color: #e0e0e0;
+  animation: pulse 1.5s infinite ease-in-out;
+}
+
+.poster {
+  width: 100%;
+  aspect-ratio: 2/3;
+  border-top-left-radius: var(--card-border-radius);
+  border-top-right-radius: var(--card-border-radius);
+}
+
+.title-container {
+  width: 100%;
+  border-bottom: 1px solid;
+  border-left: 1px solid;
+  border-right: 1px solid;
+  border-color: #e0e0e0;
+  padding: 0.5rem 1rem;
+  border-bottom-left-radius: var(--card-border-radius);
+  border-bottom-right-radius: var(--card-border-radius);
+  animation: pulse-border 1.5s infinite ease-in-out;
+}
+
+.title {
+  width: 60%;
+  height: 1.5rem;
+  border-radius: 0.25rem;
+}
+
+/* Pulse animation for skeleton */
+@keyframes pulse {
+  0% {
+    background-color: #e0e0e0;
+  }
+
+  50% {
+    background-color: #f0f0f0;
+  }
+
+  100% {
+    background-color: #e0e0e0;
+  }
+}
+
+@keyframes pulse-border {
+  0% {
+    border-color: #e0e0e0;
+  }
+
+  50% {
+    border-color: #f0f0f0;
+  }
+
+  100% {
+    border-color: #e0e0e0;
+  }
+}
