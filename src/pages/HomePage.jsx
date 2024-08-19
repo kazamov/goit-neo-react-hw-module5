@@ -6,7 +6,7 @@ import MovieGallerySkeleton from '../components/MovieGallerySkeleton';
 import MovieGalleryReal from '../components/MovieGalleryReal';
 
 async function load({ signal }) {
-  await new Promise(resolve => setTimeout(resolve, 3000));
+  await new Promise(resolve => setTimeout(resolve, 1000));
   return getTrendingMovies({ signal });
 }
 

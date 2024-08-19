@@ -10,6 +10,20 @@ const API_REQUEST_SETTINGS = {
 
 const LANGUAGE = 'en-US';
 
+export async function getTmdbConfig({ signal }) {
+  try {
+    const response = await fetch('https://api.themoviedb.org/3/configuration', {
+      ...API_REQUEST_SETTINGS,
+      signal,
+    });
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}
+
 export async function getTrendingMovies({ signal }) {
   try {
     const response = await fetch(
@@ -24,12 +38,12 @@ export async function getTrendingMovies({ signal }) {
   }
 }
 
-export async function getTmdbConfig({ signal }) {
+export async function searchMovies({ query, signal }) {
   try {
-    const response = await fetch('https://api.themoviedb.org/3/configuration', {
-      ...API_REQUEST_SETTINGS,
-      signal,
-    });
+    const response = await fetch(
+      `https://api.themoviedb.org/3/search/movie?query=${query}&language=${LANGUAGE}&include_adult=true&page=1`,
+      { ...API_REQUEST_SETTINGS, signal },
+    );
     const data = await response.json();
     return data;
   } catch (err) {
