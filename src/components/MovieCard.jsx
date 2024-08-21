@@ -1,21 +1,18 @@
 import { Link, useLocation } from 'react-router-dom';
 
 import classes from './MovieCard.module.css';
-import { useTmdbConfig } from './TmdbConfigProvider';
+import { useTmdbImg } from './TmdbConfigProvider';
 
 function MovieCard({ movie }) {
   const location = useLocation();
-  const config = useTmdbConfig();
-
-  const baseUrl = config.images.secure_base_url;
-  const size = config.images.poster_sizes[3];
+  const imageUrl = useTmdbImg(movie.poster_path);
 
   return (
     <div className={classes['movie-card']}>
       <Link to={`/movies/${movie.id}`} state={location}>
         <img
           className={classes['movie-card-img']}
-          src={`${baseUrl}${size}${movie.poster_path}`}
+          src={imageUrl}
           alt={movie.title}
           width={200}
           height={300}

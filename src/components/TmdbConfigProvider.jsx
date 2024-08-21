@@ -10,4 +10,13 @@ export const useTmdbConfig = () => {
   return useContext(TmdbContext);
 };
 
+export function useTmdbImg(imagePath, cutomSize) {
+  const config = useTmdbConfig();
+
+  const baseUrl = config.images.secure_base_url;
+  const size = config.images.poster_sizes[3];
+
+  return `${baseUrl}${cutomSize ?? size}${imagePath}`;
+}
+
 export default TmdbConfigProvider;

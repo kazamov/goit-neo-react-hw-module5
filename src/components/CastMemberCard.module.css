@@ -1,0 +1,32 @@
+.cast-member {
+  display: flex;
+  flex-direction: column;
+  max-width: 138px;
+
+  .cast-member-dummy {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #d6d6d6;
+    border-top-left-radius: var(--card-border-radius);
+    border-top-right-radius: var(--card-border-radius);
+    width: 100%;
+    height: 175px;
+  }
+
+  .cast-member-image {
+    border-top-left-radius: var(--card-border-radius);
+    border-top-right-radius: var(--card-border-radius);
+    height: 100%;
+    max-width: 100%;
+  }
+
+  .cast-member-info {
+    border-left: 1px solid #d6d6d6;
+    border-right: 1px solid #d6d6d6;
+    border-bottom: 1px solid #d6d6d6;
+    border-bottom-left-radius: var(--card-border-radius);
+    border-bottom-right-radius: var(--card-border-radius);
+    padding: 0.5rem;
+  }
+}

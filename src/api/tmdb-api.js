@@ -51,3 +51,51 @@ export async function searchMovies({ query, signal }) {
     return null;
   }
 }
+
+export async function getMovieDetails({ movieId, signal }) {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}?language=${LANGUAGE}`,
+      { ...API_REQUEST_SETTINGS, signal },
+    );
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}
+
+export async function getMovieCast({ movieId, signal }) {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?language=${LANGUAGE}`,
+      {
+        ...API_REQUEST_SETTINGS,
+        signal,
+      },
+    );
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}
+
+export async function getMovieReviews({ movieId, signal }) {
+  try {
+    const response = await fetch(
+      `https://api.themoviedb.org/3/movie/${movieId}/reviews?language=${LANGUAGE}&page=1`,
+      {
+        ...API_REQUEST_SETTINGS,
+        signal,
+      },
+    );
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.error(err);
+    return null;
+  }
+}

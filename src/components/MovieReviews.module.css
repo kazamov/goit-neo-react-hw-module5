@@ -1,0 +1,22 @@
+.reviews {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  .review {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    border: 1px solid #d6d6d6;
+    border-radius: var(--card-border-radius);
+    padding: 1rem;
+
+    .review-author {
+      font-weight: bold;
+    }
+
+    .review-content {
+      flex: 1;
+    }
+  }
+}

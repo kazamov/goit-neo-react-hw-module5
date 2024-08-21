@@ -5,13 +5,8 @@ import { getTrendingMovies } from '../api/tmdb-api';
 import MovieGallerySkeleton from '../components/MovieGallerySkeleton';
 import MovieGalleryReal from '../components/MovieGalleryReal';
 
-async function load({ signal }) {
-  await new Promise(resolve => setTimeout(resolve, 1000));
-  return getTrendingMovies({ signal });
-}
-
-export function homePageLoader({ request }) {
-  const data = load({ signal: request.signal });
+export async function loader({ request }) {
+  const data = getTrendingMovies({ signal: request.signal });
 
   return defer({ data });
 }

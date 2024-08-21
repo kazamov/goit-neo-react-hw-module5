@@ -1,0 +1,28 @@
+.not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100dvh;
+
+  .not-found-content {
+    max-width: 28rem;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    justify-content: center;
+    align-items: center;
+
+    h1,
+    p {
+      text-align: center;
+    }
+
+    button {
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+  }
+}

@@ -1,11 +1,6 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
-import HomePage, { homePageLoader } from './pages/HomePage';
 import NotFoundPage from './pages/NotFoundPage';
-import MoviesPage from './pages/MoviesPage';
-import MovieDetailsPage from './pages/MovieDetailsPage';
-import MovieCast from './components/MovieCast';
-import MovieReviews from './components/MovieReviews';
 import Layout from './components/Layout';
 
 import { getTmdbConfig } from './api/tmdb-api';
@@ -20,24 +15,40 @@ const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        loader: homePageLoader,
-        element: <HomePage />,
+        lazy: async () => {
+          const { default: Component, loader } = await import('./pages/HomePage');
+          return {
+            Component,
+            loader,
+          };
+        },
       },
       {
         path: '/movies',
-        element: <MoviesPage />,
+        lazy: async () => {
+          const { default: Component } = await import('./pages/MoviesPage');
+          return {
+            Component,
+          };
+        },
       },
       {
         path: '/movies/:movieId',
-        element: <MovieDetailsPage />,
+        lazy: async () => {
+          const { default: Component, loader } = await import('./pages/MovieDetailsPage');
+          return {
+            Component,
+            loader,
+          };
+        },
         children: [
           {
             path: '/movies/:movieId/cast',
-            element: <MovieCast />,
+            lazy: () => import('./components/MovieCast'),
           },
           {
             path: '/movies/:movieId/reviews',
-            element: <MovieReviews />,
+            lazy: () => import('./components/MovieReviews'),
           },
         ],
       },
